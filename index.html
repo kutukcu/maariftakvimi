@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///Users/tolga/Downloads/index%20(1).html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=600, initial-scale=1.0, user-scalable=no">
+<title>Maarif Takvimi</title>
+<style>
+/* ---- Kindle eski WebKit uyumu: sadece temel CSS, tablo tabanli yerlesim ---- */
+html,body{margin:0;padding:0;background:#fff;color:#000;
+  font-family:"Times New Roman",Georgia,serif;
+  -webkit-text-size-adjust:none;text-size-adjust:none;}
+*{box-sizing:border-box;}
+#page{width:600px;height:800px;margin:0 auto;background:#fff;position:relative;overflow:hidden;}
+#frame{position:absolute;top:6px;left:6px;right:6px;bottom:6px;
+  border:3px solid #000;}
+#inner{position:absolute;top:5px;left:5px;right:5px;bottom:5px;
+  border:1px solid #000;padding:8px 12px;}
+table{border-collapse:collapse;width:100%;}
+td{vertical-align:top;padding:0;}
+.ctr{text-align:center;} .rgt{text-align:right;} .lft{text-align:left;}
+.b{font-weight:bold;} .hr{border-top:2px solid #000;height:0;line-height:0;font-size:0;}
+.hrt{border-top:1px solid #000;height:0;line-height:0;font-size:0;}
+
+/* Header */
+.hdr td{padding:2px 4px;font-size:13px;line-height:1.15;}
+.hdr .big{font-size:22px;font-weight:bold;line-height:1.0;}
+.hdr .lbl{font-size:12px;}
+
+/* Sub counters */
+.sub td{font-size:13px;padding:3px 2px;text-align:center;font-weight:bold;}
+
+/* Month title */
+.month{font-size:56px;font-weight:bold;text-align:center;letter-spacing:10px;
+  padding:2px 0 0 14px;line-height:1.0;}
+
+/* Middle */
+.daynum{font-size:250px;font-weight:bold;line-height:0.8;text-align:center;
+  font-family:Georgia,"Times New Roman",serif;}
+.cityname{font-size:13px;font-weight:bold;text-align:center;padding-top:2px;}
+.times{font-size:15px;line-height:1.28;}
+.times .p{font-weight:bold;} .times .v{font-weight:bold;font-size:16px;}
+.timesbox{border:1.5px solid #000;padding:5px 8px;display:inline-block;text-align:left;}
+
+/* clock */
+.clock{width:88px;height:88px;border:2px solid #000;border-radius:50%;
+  position:relative;margin:0 auto;background:#fff;}
+.tick{position:absolute;width:2px;height:6px;background:#000;left:43px;top:2px;}
+.hand{position:absolute;left:44px;bottom:44px;background:#000;
+  -webkit-transform-origin:bottom center;transform-origin:bottom center;}
+.hh{width:3px;height:26px;margin-left:-1.5px;}
+.mh{width:2px;height:36px;margin-left:-1px;}
+.pin{position:absolute;width:6px;height:6px;background:#000;border-radius:50%;
+  left:41px;top:41px;}
+
+/* continuation line */
+.cont{font-size:13px;font-weight:bold;text-align:center;padding:5px 0;}
+
+/* weekday */
+.weekday{font-size:46px;font-weight:bold;text-align:center;letter-spacing:6px;
+  padding:2px 0 0 10px;line-height:1.0;}
+
+/* notes + quote */
+.note{font-size:13px;text-align:center;line-height:1.3;padding:2px 6px;}
+.note .par{font-style:italic;}
+.quote{font-size:13px;text-align:center;line-height:1.35;padding:6px 10px 2px;}
+.foot{font-size:12px;font-weight:bold;text-align:center;padding-top:4px;}
+</style>
+</head>
+<body>
+<div id="page"><div id="frame"><div id="inner">
+
+  <!-- ===== HEADER ===== -->
+  <table class="hdr"><tbody><tr>
+    <td width="34%" class="lft">
+      <div><span id="hicriYil">1448</span> <span class="lbl">Hicri</span></div>
+      <div class="b" id="hicriAy">Safer</div>
+      <div class="big" id="hicriGun">6</div>
+    </td>
+    <td width="32%" class="ctr">
+      <div class="lbl">Günün</div>
+      <div class="lbl">uzaması</div>
+      <div class="b" id="uzama">2 dakika</div>
+    </td>
+    <td width="34%" class="rgt">
+      <div><span id="rumiYil">1442</span> <span class="lbl">Rumi</span></div>
+      <div class="b" id="rumiAy">Temmuz</div>
+      <div class="big" id="rumiGun">9</div>
+    </td>
+  </tr></tbody></table>
+  <div class="hr"></div>
+
+  <!-- ===== SUB COUNTERS ===== -->
+  <table class="sub"><tbody><tr>
+    <td>Yıl: <span id="cYil">2026</span></td>
+    <td>Ay: <span id="cAy">7</span></td>
+    <td>Gün: <span id="cGun">203</span></td>
+    <td>Kasım: <span id="cKasim">257</span></td>
+  </tr></tbody></table>
+  <div class="hr"></div>
+
+  <!-- ===== MONTH ===== -->
+  <div class="month" id="ayAdi">TEMMUZ</div>
+  <div class="hrt" style="margin-top:4px;"></div>
+
+  <!-- ===== MIDDLE: clocks + big number ===== -->
+  <table><tbody><tr>
+    <td width="30%" class="ctr">
+      <div class="clock" id="clkIst">
+        <div class="tick"></div>
+        <div class="hand hh" id="istHH" style="transform: rotate(175deg);"></div>
+        <div class="hand mh" id="istMH" style="transform: rotate(300deg);"></div>
+        <div class="pin"></div>
+      </div>
+      <div class="cityname">İstanbul</div>
+    </td>
+    <td width="40%" class="daynum" id="ayGun">22</td>
+    <td width="30%" class="ctr">
+      <div class="clock" id="clkAnk">
+        <div class="tick"></div>
+        <div class="hand hh" id="ankHH" style="transform: rotate(169deg);"></div>
+        <div class="hand mh" id="ankMH" style="transform: rotate(228deg);"></div>
+        <div class="pin"></div>
+      </div>
+      <div class="cityname">Ankara</div>
+    </td>
+  </tr></tbody></table>
+
+  <!-- ===== PRAYER TIMES ===== -->
+  <table style="margin-top:2px;"><tbody><tr>
+    <td width="34%" class="ctr">
+      <div class="timesbox times" id="istTimes"><div class="p">Güneş</div><div class="v">05:51</div><div class="p">Öğle</div><div class="v">13:11</div><div class="p">İkindi</div><div class="v">17:08</div><div class="p">Akşam</div><div class="v">20:30</div><div class="p">Yatsı</div><div class="v">22:19</div><div class="p">İmsak</div><div class="v">03:53</div></div>
+    </td>
+    <td width="32%"></td>
+    <td width="34%" class="ctr">
+      <div class="timesbox times" id="ankTimes"><div class="p">Güneş</div><div class="v">05:38</div><div class="p">Öğle</div><div class="v">12:55</div><div class="p">İkindi</div><div class="v">16:51</div><div class="p">Akşam</div><div class="v">20:12</div><div class="p">Yatsı</div><div class="v">21:57</div><div class="p">İmsak</div><div class="v">03:44</div></div>
+    </td>
+  </tr></tbody></table>
+
+  <div class="cont" id="devam">Günün devamı: 14 S. 39 D. &nbsp;—&nbsp; Gecenin devamı: 9 S. 21 D.</div>
+  <div class="hrt"></div>
+
+  <!-- ===== WEEKDAY ===== -->
+  <div class="weekday" id="gunAdi">ÇARŞAMBA</div>
+  <div class="hrt" style="margin-top:2px;"></div>
+
+  <!-- ===== NOTES + QUOTE ===== -->
+  <div class="note" id="notlar"></div>
+  <div class="quote" id="soz">Vakit nakittir. — Benjamin Franklin</div>
+  <div class="hrt"></div>
+  <div class="foot">Büyük Saatli Maarif Takvimi</div>
+
+</div></div></div>
+
+<script>
+/* ============================================================
+   AYARLAR
+   ============================================================ */
+var TZ = 3;              // Türkiye saati (2016'dan beri sürekli UTC+3)
+var HIJRI_ADJUST = 0;    // Hicri gün Diyanet'ten 1 gün farklıysa -1 veya +1 yap
+// Namaz vakti dakika düzeltmeleri. Hepsi 0 = saf astronomik (bugünkü Diyanet'e yakın).
+// Eski Maarif "temkin"li görünüm için: Imsak:-1,Gunes:-7,Ogle:+7,Ikindi:+3,Aksam:+8,Yatsi:+1
+var OFFSET = {Imsak:0, Gunes:0, Ogle:0, Ikindi:0, Aksam:0, Yatsi:0};
+
+var CITIES = {
+  ist:{lat:41.0082, lng:28.9784},
+  ank:{lat:39.9334, lng:32.8597}
+};
+
+var AY_TR = ["OCAK","ŞUBAT","MART","NİSAN","MAYIS","HAZİRAN","TEMMUZ",
+             "AĞUSTOS","EYLÜL","EKİM","KASIM","ARALIK"];
+var GUN_TR = ["PAZAR","PAZARTESİ","SALI","ÇARŞAMBA","PERŞEMBE","CUMA","CUMARTESİ"];
+var HICRI_AY = ["Muharrem","Safer","Rebiülevvel","Rebiülahir","Cemaziyelevvel",
+  "Cemaziyelahir","Recep","Şaban","Ramazan","Şevval","Zilkade","Zilhicce"];
+var RUMI_AY = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz",
+               "Ağustos","Eylül","Ekim","Kasım","Aralık"];
+
+/* Güne özel notlar: "AA-GG": "metin". İstediğin günleri doldur. */
+var NOTLAR = {
+  "01-01":"(Yılbaşı)",
+  "04-23":"(Ulusal Egemenlik ve Çocuk Bayramı)",
+  "05-19":"(Atatürk'ü Anma, Gençlik ve Spor Bayramı)",
+  "08-30":"(Zafer Bayramı)",
+  "10-29":"(Cumhuriyet Bayramı)"
+};
+
+/* Günlük dönen özdeyişler (gün sırasına göre) */
+var SOZLER = [
+  "Doğanın istekleri anlamamazlıktan gelen cezasını görür. — H. de Balzac",
+  "Bilgi güçtür. — Francis Bacon",
+  "Düşünüyorum, öyleyse varım. — Descartes",
+  "İnsan ancak çalışmakla insan olur. — Mevlana",
+  "Ağaç yaşken eğilir. — Türk atasözü",
+  "Zaman en iyi öğretmendir. — Sophokles",
+  "Bilmediğini bilmek en hakiki bilgidir. — Sokrates",
+  "Sabır acıdır ama meyvesi tatlıdır. — Rousseau",
+  "Okumak zihni özgürleştirir. — Voltaire",
+  "En büyük zafer nefsi yenmektir. — Platon",
+  "Damlaya damlaya göl olur. — Türk atasözü",
+  "Emek olmadan yemek olmaz. — Türk atasözü",
+  "Adalet mülkün temelidir. — Hz. Ömer",
+  "Kalem kılıçtan keskindir. — E. Bulwer-Lytton",
+  "İyilik yap denize at, balık bilmezse Halik bilir. — Türk atasözü",
+  "Hayat ileriye doğru yaşanır, geriye doğru anlaşılır. — Kierkegaard",
+  "Çalışmak ibadetin en güzelidir. — Atasözü",
+  "Vakit nakittir. — Benjamin Franklin",
+  "Bir dilin sınırları dünyanın sınırlarıdır. — Wittgenstein",
+  "Merhamet dünyanın ilacıdır. — Yunus Emre",
+  "İlim, Çin'de de olsa gidip alınız. — Hz. Muhammed",
+  "Cehalet en büyük düşmandır. — Galileo",
+  "Umut, uyanık insanın rüyasıdır. — Aristoteles",
+  "Az söyle, çok dinle. — Anonim",
+  "Kitaplar sessiz öğretmenlerdir. — Anonim",
+  "Gülü seven dikenine katlanır. — Türk atasözü",
+  "Bugünün işini yarına bırakma. — Atasözü",
+  "Dost kara günde belli olur. — Türk atasözü",
+  "Akıl yaşta değil baştadır. — Türk atasözü",
+  "Sağlam kafa sağlam vücutta bulunur. — Juvenalis",
+  "Bilgiye giden yol sorularla döşenir. — Anonim"
+];
+
+/* ============================================================
+   MATEMATİK — güneş / namaz vakitleri (offline, saf JS)
+   ============================================================ */
+function dtr(d){return d*Math.PI/180;} function rtd(r){return r*180/Math.PI;}
+function dsin(d){return Math.sin(dtr(d));} function dcos(d){return Math.cos(dtr(d));}
+function dtan(d){return Math.tan(dtr(d));}
+function darcsin(x){return rtd(Math.asin(x));} function darccos(x){return rtd(Math.acos(x));}
+function darctan2(y,x){return rtd(Math.atan2(y,x));} function darccot(x){return rtd(Math.atan(1/x));}
+function fixHour(a){a=a-24*Math.floor(a/24);return a<0?a+24:a;}
+function fixAng(a){a=a-360*Math.floor(a/360);return a<0?a+360:a;}
+
+function julian(y,m,d){ if(m<=2){y-=1;m+=12;} var A=Math.floor(y/100);
+  var B=2-A+Math.floor(A/4);
+  return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
+
+function sunPos(jd){ var D=jd-2451545.0;
+  var g=fixAng(357.529+0.98560028*D);
+  var q=fixAng(280.459+0.98564736*D);
+  var L=fixAng(q+1.915*dsin(g)+0.020*dsin(2*g));
+  var e=23.439-0.00000036*D;
+  var decl=darcsin(dsin(e)*dsin(L));
+  var RA=fixHour(darctan2(dcos(e)*dsin(L),dcos(L))/15);
+  return {decl:decl, eqt:q/15-RA}; }
+
+function prayerTimes(y,m,d,lat,lng){
+  var jd=julian(y,m,d)-lng/(15*24);
+  function midDay(t){return fixHour(12-sunPos(jd+t).eqt);}
+  function angT(angle,t,ccw){ var decl=sunPos(jd+t).decl; var noon=midDay(t);
+    var x=(-dsin(angle)-dsin(decl)*dsin(lat))/(dcos(decl)*dcos(lat));
+    return noon+(ccw?-1:1)*(1/15*darccos(x)); }
+  function asrT(t){ var decl=sunPos(jd+t).decl;
+    var angle=-darccot(1+dtan(Math.abs(lat-decl))); return angT(angle,t,false); }
+  var r={
+    Imsak: angT(18,5/24,true),
+    Gunes: angT(0.833,6/24,true),
+    Ogle:  midDay(12/24),
+    Ikindi:asrT(13/24),
+    Aksam: angT(0.833,18/24,false),
+    Yatsi: angT(17,18/24,false)
+  };
+  function loc(t){return fixHour(t+TZ-lng/15);}
+  var out={};
+  for(var k in r){ out[k]=loc(r[k])+(OFFSET[k]||0)/60; }
+  return out; // saat cinsinden ondalık
+}
+function hhmm(t){ t=fixHour(t)+0.5/60; var h=Math.floor(t); var mn=Math.floor((t-h)*60);
+  return (h<10?"0":"")+h+":"+(mn<10?"0":"")+mn; }
+
+/* ============================================================
+   TAKVİM DÖNÜŞÜMLERİ
+   ============================================================ */
+function gregToJDN(y,m,d){ var a=Math.floor((14-m)/12); var yy=y+4800-a; var mm=m+12*a-3;
+  return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045; }
+
+function jdnToHijri(jdn){ jdn=jdn+HIJRI_ADJUST;
+  var l=jdn-1948440+10632;
+  var n=Math.floor((l-1)/10631);
+  l=l-10631*n+354;
+  var j=Math.floor((10985-l)/5316)*Math.floor((50*l)/17719)+Math.floor(l/5670)*Math.floor((43*l)/15238);
+  l=l-Math.floor((30-j)/15)*Math.floor((17719*j)/50)-Math.floor(j/16)*Math.floor((15238*j)/43)+29;
+  var m=Math.floor((24*l)/709);
+  var d=l-Math.floor((709*m)/24);
+  return {y:30*n+j-30, m:m, d:d}; }
+
+function jdnToJulian(jdn){ var c=jdn+32082;
+  var dd=Math.floor((4*c+3)/1461); var e=c-Math.floor(1461*dd/4);
+  var mm=Math.floor((5*e+2)/153);
+  return { d:e-Math.floor((153*mm+2)/5)+1, m:mm+3-12*Math.floor(mm/10),
+           y:dd-4800+Math.floor(mm/10) }; }
+
+function dayOfYear(y,m,d){ var s=Date.UTC(y,0,0); var n=Date.UTC(y,m-1,d);
+  return Math.round((n-s)/86400000); }
+function kasimGun(y,m,d){ var t=Date.UTC(y,m-1,d); var start=Date.UTC(y,10,8);
+  if(t<start) start=Date.UTC(y-1,10,8);
+  return Math.round((t-start)/86400000)+1; }
+
+/* ============================================================
+   SAAT ÇİZİMİ (analog, güneş doğuşu saatini gösterir)
+   ============================================================ */
+function setClock(prefix, decHour){
+  var h=Math.floor(fixHour(decHour)); var mn=Math.floor((fixHour(decHour)-h)*60);
+  var hAng=(h%12)*30 + mn*0.5;   // saat ibresi
+  var mAng=mn*6;                 // dakika ibresi
+  var hh=document.getElementById(prefix+"HH");
+  var mh=document.getElementById(prefix+"MH");
+  hh.style.webkitTransform="rotate("+hAng+"deg)"; hh.style.transform="rotate("+hAng+"deg)";
+  mh.style.webkitTransform="rotate("+mAng+"deg)"; mh.style.transform="rotate("+mAng+"deg)";
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+var lastKey="";
+function render(){
+  var now=new Date();
+  var y=now.getFullYear(), m=now.getMonth()+1, d=now.getDate();
+  var key=y+"-"+m+"-"+d;
+  lastKey=key;
+
+  var jdn=gregToJDN(y,m,d);
+
+  // Hicri
+  var h=jdnToHijri(jdn);
+  document.getElementById("hicriYil").innerHTML=h.y;
+  document.getElementById("hicriAy").innerHTML=HICRI_AY[h.m-1];
+  document.getElementById("hicriGun").innerHTML=h.d;
+
+  // Rumi
+  var ju=jdnToJulian(jdn);
+  var ry=ju.y-584; if(ju.m<3) ry-=1;
+  document.getElementById("rumiYil").innerHTML=ry;
+  document.getElementById("rumiAy").innerHTML=RUMI_AY[ju.m-1];
+  document.getElementById("rumiGun").innerHTML=ju.d;
+
+  // Sayaçlar
+  document.getElementById("cYil").innerHTML=y;
+  document.getElementById("cAy").innerHTML=m;
+  document.getElementById("cGun").innerHTML=dayOfYear(y,m,d);
+  document.getElementById("cKasim").innerHTML=kasimGun(y,m,d);
+
+  // Ay / gün / gün adı
+  document.getElementById("ayAdi").innerHTML=AY_TR[m-1];
+  document.getElementById("ayGun").innerHTML=d;
+  document.getElementById("gunAdi").innerHTML=GUN_TR[now.getDay()];
+
+  // Namaz vakitleri
+  var pi=prayerTimes(y,m,d,CITIES.ist.lat,CITIES.ist.lng);
+  var pa=prayerTimes(y,m,d,CITIES.ank.lat,CITIES.ank.lng);
+  document.getElementById("istTimes").innerHTML=timesHTML(pi);
+  document.getElementById("ankTimes").innerHTML=timesHTML(pa);
+
+  // Saatler (güneş doğuşu)
+  setClock("ist", pi.Gunes);
+  setClock("ank", pa.Gunes);
+
+  // Günün / gecenin devamı (İstanbul referans)
+  var gunLen=fixHour(pi.Aksam-pi.Gunes);
+  var geceLen=24-gunLen;
+  document.getElementById("devam").innerHTML=
+    "Günün devamı: "+sd(gunLen)+" &nbsp;—&nbsp; Gecenin devamı: "+sd(geceLen);
+
+  // Günün uzaması (bugün - dün, İstanbul gündüz uzunluğu farkı)
+  var dun=new Date(now.getTime()-86400000);
+  var pid=prayerTimes(dun.getFullYear(),dun.getMonth()+1,dun.getDate(),CITIES.ist.lat,CITIES.ist.lng);
+  var gunLenDun=fixHour(pid.Aksam-pid.Gunes);
+  var diff=Math.round((gunLen-gunLenDun)*60);
+  var uz=(diff>=0?"uzaması":"kısalması");
+  document.getElementById("uzama").innerHTML=Math.abs(diff)+" dakika";
+
+  // Notlar
+  var mmdd=(m<10?"0":"")+m+"-"+(d<10?"0":"")+d;
+  document.getElementById("notlar").innerHTML=NOTLAR[mmdd]||"";
+
+  // Söz (gün sırasına göre)
+  document.getElementById("soz").innerHTML=SOZLER[dayOfYear(y,m,d)%SOZLER.length];
+}
+
+function timesHTML(p){
+  var rows=[["Güneş",p.Gunes],["Öğle",p.Ogle],["İkindi",p.Ikindi],
+            ["Akşam",p.Aksam],["Yatsı",p.Yatsi],["İmsak",p.Imsak]];
+  var s="";
+  for(var i=0;i<rows.length;i++){
+    s+='<div class="p">'+rows[i][0]+'</div><div class="v">'+hhmm(rows[i][1])+'</div>';
+  }
+  return s;
+}
+function sd(dec){ var h=Math.floor(dec); var mn=Math.round((dec-h)*60);
+  if(mn==60){h++;mn=0;} return h+" S. "+(mn<10?"0":"")+mn+" D."; }
+
+/* ============================================================
+   OTOMATİK GÜNCELLEME
+   Her dakika kontrol; gün değişince tam yeniden yükle (e-ink temiz kalır).
+   ============================================================ */
+render();
+setInterval(function(){
+  var now=new Date();
+  var key=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+  if(key!==lastKey){
+    // Gün değişti: sayfayı yeniden yükle (Kindle tarayıcısında en garantili yol)
+    try{ location.reload(true); }catch(e){ render(); }
+  }
+}, 60000);
+</script>
+
+
+</body></html>
