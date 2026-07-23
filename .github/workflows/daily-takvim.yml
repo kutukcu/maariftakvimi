@@ -1,0 +1,49 @@
+name: Gunluk Takvim PNG
+
+on:
+  schedule:
+    # Her gece 21:15 UTC = 00:15 Turkiye saati (UTC+3)
+    - cron: '15 21 * * *'
+  workflow_dispatch:  # Elle tetiklemek icin (test amacli)
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Kodu cek
+        uses: actions/checkout@v4
+
+      - name: Node.js kur
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: ImageMagick kur (gri donusum icin)
+        run: sudo apt-get install -y imagemagick
+
+      - name: Puppeteer kur
+        run: npm install puppeteer
+
+      - name: PNG olustur
+        run: node generate.js
+
+      - name: PNG'yi griye cevir (Kindle icin)
+        run: |
+          convert screensaver.png \
+            -colorspace Gray \
+            -depth 8 \
+            -resize 600x800! \
+            screensaver.png
+          echo "PNG boyutu: $(identify -format '%wx%h' screensaver.png)"
+
+      - name: Degisikligi commit et
+        run: |
+          git config user.name "Takvim Bot"
+          git config user.email "action@github.com"
+          git add screensaver.png
+          git diff --staged --quiet && echo "Degisiklik yok" || \
+            git commit -m "Takvim guncellendi: $(TZ='Europe/Istanbul' date '+%d %B %Y')"
+          git push
