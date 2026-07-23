@@ -1,10 +1,9 @@
-name: Gunluk Takvim PNG
+name: Gunluk Dashboard
 
 on:
   schedule:
-    # Her gece 21:15 UTC = 00:15 Turkiye saati (UTC+3)
-    - cron: '15 21 * * *'
-  workflow_dispatch:  # Elle tetiklemek icin (test amacli)
+    - cron: '0 5 * * *'   # 05:00 UTC = 01:00 EDT (gece yarısı sonrası)
+  workflow_dispatch:        # Elle tetikleme
 
 jobs:
   generate:
@@ -13,15 +12,13 @@ jobs:
       contents: write
 
     steps:
-      - name: Kodu cek
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Node.js kur
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: ImageMagick kur (gri donusum icin)
+      - name: ImageMagick kur
         run: sudo apt-get install -y imagemagick
 
       - name: Puppeteer kur
@@ -30,20 +27,20 @@ jobs:
       - name: PNG olustur
         run: node generate.js
 
-      - name: PNG'yi griye cevir (Kindle icin)
+      - name: Gri tonlamaya cevir (Kindle icin)
         run: |
           convert screensaver.png \
             -colorspace Gray \
             -depth 8 \
             -resize 600x800! \
             screensaver.png
-          echo "PNG boyutu: $(identify -format '%wx%h' screensaver.png)"
+          echo "Boyut: $(identify -format '%wx%h' screensaver.png)"
 
-      - name: Degisikligi commit et
+      - name: Commit
         run: |
-          git config user.name "Takvim Bot"
+          git config user.name "Dashboard Bot"
           git config user.email "action@github.com"
           git add screensaver.png
           git diff --staged --quiet && echo "Degisiklik yok" || \
-            git commit -m "Takvim guncellendi: $(TZ='Europe/Istanbul' date '+%d %B %Y')"
+            git commit -m "Dashboard: $(TZ='America/New_York' date '+%d %B %Y')"
           git push
